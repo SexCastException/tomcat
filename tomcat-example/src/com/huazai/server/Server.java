@@ -20,7 +20,7 @@ public class Server {
         try {
             // 1.建立serverSocket监听8080端口
             serverSocket = new ServerSocket(8080);
-            while (true) {
+            if (true) {
                 Socket socket = serverSocket.accept();
                 inputStream = socket.getInputStream();
                 outputStream = socket.getOutputStream();
