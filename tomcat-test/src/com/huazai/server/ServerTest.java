@@ -1,6 +1,7 @@
 package com.huazai.server;
 
-import java.io.IOException;
+import com.sun.org.apache.xpath.internal.operations.String;
+
 import java.io.OutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -33,21 +34,28 @@ public class ServerTest {
                 outputStream.write("Server:华仔服务器\n".getBytes());
                 // 响应体,响应头和响应体之间有一行空行
                 outputStream.write("\n".getBytes());
+                StringBuilder stringBuilder = new StringBuilder();
+                stringBuilder.append("<html><head></head><body>");
+                stringBuilder.append("<a href='http://www.baidu.com'><img src='https://www.baidu.com/img/bd_logo1.png?where=super' alt='百度logo' />百度logo1</a>");
+                stringBuilder.append("</body></html>");
                 outputStream.write("hello world".getBytes());
             }
         } catch (Exception e) {
             e.printStackTrace();
         } finally {
-        if (socket != null) {
+            // 5_释放资源
             try {
-                socket.close();
+                if (socket != null) {
+                    socket.close();
+                    socket = null;
+                }
+                if (outputStream != null) {
+                    outputStream.close();
+                    outputStream = null;
+                }
             } catch (Exception e) {
                 e.printStackTrace();
             }
         }
-        }
-
-
-        // 5_释放资源
     }
 }
