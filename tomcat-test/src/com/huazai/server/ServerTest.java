@@ -34,9 +34,9 @@ public class ServerTest {
                 outputStream.write("\n".getBytes());
                 StringBuilder stringBuilder = new StringBuilder();
                 stringBuilder.append("<html><head></head><body>");
-                stringBuilder.append("<a href='http://www.baidu.com'><img src='https://www.baidu.com/img/bd_logo1.png?where=super' alt='百度logo' />百度logo1</a>");
+                stringBuilder.append("<a href='http://www.baidu.com'><img src='https://www.baidu.com/img/bd_logo1.png?where=super' alt='百度logo' />这是华仔自定义的web服务器</a>");
                 stringBuilder.append("</body></html>");
-                outputStream.write("hello world".getBytes());
+                outputStream.write(stringBuilder.toString().getBytes());
             }
         } catch (Exception e) {
             e.printStackTrace();
